@@ -1,0 +1,137 @@
+@local=http://localhost:3000
+
+@biz_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODM0OTIwNjdlZDEwMDhhMjdkNjZhMWMiLCJpYXQiOjE3NDgyNzU3Mjh9._DaXOhO1i0I08jdo3-qTEdFmTqqYUQQ_92ED_g8cqVQ
+
+@non_biz_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODJiMTZlOWJhZmFkNTEwOWNiNjUyNTQiLCJpYXQiOjE3NDc2NTQzODV9.HoHchLE1oX5lFYIY74Hk2DhAFWWOu7ZHnzwiDccLavU
+
+
+
+
+###
+# register
+POST {{local}}/api/users/
+Content-Type: application/json
+
+{
+    "name": 
+    {"first": "jonh", "last": "doe"},
+    "phone":"8935575655",
+    "email": "e6ehtf56jk@example.com",
+    "password": "123456",
+    "address":
+    {"country": "sdg","city":"sdf", "street":"dfg","houseNumber":"5"},
+    "isBusiness": true
+}
+
+
+###
+# login
+POST   {{local}}/api/login/
+Content-Type: application/json
+
+{
+    "email": "e6ehtf56jk@example.com",
+    "password": "123456"
+}
+
+###
+DELETE {{local}}/api/users/68297fd356c8c5e0d4762ccd
+auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODJkOWI1MmZlNGZmMWE4MzgyMzU4M2UiLCJpYXQiOjE3NDc4MTkzNTR9.DRC9lsrJ-Qdmz-WD44Y3IjRqrUrhy6bR_FJyHWRg5X0
+###
+# edit user
+PUT {{local}}/api/users/682dfeea2678f27bb39cd82c
+Content-Type: application/json
+auth-token: {{biz_token}}
+
+{
+    "name": 
+    {"first": "jooo", "last": "doe"},
+    "phone":"8935575655",
+    "email": "eehtf56jk@example.com",
+    "password": "123456",
+    "address":
+    {"country": "sdg","city":"sdf", "street":"dfg","houseNumber":"5"},
+    "isBusiness": true
+}
+###
+PATCH {{local}}/api/users/682dfeea2678f27bb39cd82c
+Content-Type: application/json
+auth-token: {{biz_token}}
+
+{
+"isBusiness": true
+}
+###
+# get user
+# correct
+get {{local}}/api/users/68297fd356c8c5e0d4762ccd 
+auth-token: {{biz_token}}
+###
+# get a different user
+get {{local}}/api/users/68297fd356c8c5e0d4762ccd
+auth-token: {{non_biz_token}}
+###
+# request all users
+get {{local}}/api/users/
+auth-token: {{biz_token}}
+
+
+
+### 
+# correct - biz user
+post {{local}}/api/cards
+auth-token: {{biz_token}}
+Content-Type: application/json
+
+{
+    "title": "adhkkdgh",
+    "subtitle": "dfsdf",
+    "description": "sdgask",
+    "email": "ehtf56jk@example.com",
+    "address": {
+        "country": "sdg",
+        "city": "sdf",
+        "street": "dfg",
+        "houseNumber": "5"},
+    "phone": "4564578833"
+}
+
+###
+@card_id=682ed26a737fd060558259fa
+get {{local}}/api/cards/{{card_id}}
+###
+get {{local}}/api/cards
+###
+get {{local}}/api/cards/my-cards
+auth-token: {{biz_token}}
+###
+
+DELETE {{local}}/api/cards/{{card_id}}
+auth-token: {{biz_token}}
+
+###
+put {{local}}/api/cards/{{card_id}}
+auth-token: {{biz_token}}
+Content-Type: application/json
+
+{
+    "title": "fffff",
+    "subtitle": "dfsdf",
+    "description": "sdgask",
+    "email": "ehtf56jk@example.com",
+    "address": {
+        "country": "sdg",
+        "city": "sdf",
+        "street": "dfg",
+        "houseNumber": "5"},
+    "phone": "4564578833"
+}
+
+###
+# like a card
+PATCH  {{local}}/api/cards/{{card_id}}
+auth-token: {{biz_token}}
+###
+# like a card
+PATCH  {{local}}/api/cards/{{card_id}}
+auth-token: {{non_biz_token}}

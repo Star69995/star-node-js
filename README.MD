@@ -2,6 +2,9 @@
 
 This is the backend service for the **Star Fullstack Application**, built using Node.js.
 
+This project provides a RESTful API that allows users to register, log in, and manage their profile, as well as create, edit, like, and delete business cards.  
+It supports full authentication, authorization, and role-based access for both regular and business users.
+
 ## Features
 
 - RESTful API endpoints

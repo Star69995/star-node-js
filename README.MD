@@ -20,7 +20,7 @@ This is the backend service for the **Star Fullstack Application**, built using 
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/your-username/star-node-js.git
+    git clone https://github.com/Star69995/star-node-js.git
     cd star-node-js
     ```
 
@@ -41,35 +41,17 @@ This is the backend service for the **Star Fullstack Application**, built using 
 
 ### Development
 
-Start the development server:
+Start the server:
 ```bash
 npm run dev
 ```
 
-### Production
-
-Build and start the production server:
-```bash
-npm run build
-npm start
-```
-
 ## Scripts
 
-- `npm run dev`: Start the development server with hot-reloading.
-- `npm run build`: Build the project for production.
-- `npm start`: Start the production server.
+- `npm run dev`: Start the server with hot-reloading.
+- `npm start`: Start the server.
 
-## Folder Structure
 
-```
-/src
-  /controllers
-  /models
-  /routes
-  /middlewares
-  /utils
-```
 
 ## User API Endpoints
 
@@ -137,41 +119,39 @@ npm start
 
 ## Endpoint Descriptions
 
-### `GET /cards`
-- **Description:** Retrieve all cards.  
-- **Authorization:** Anyone  
-- **Returns:** Array of 2 cards
+### Endpoint Descriptions
 
-### `GET /cards/my-cards`
-- **Description:** Retrieve all cards created by the logged-in user.  
-- **Authorization:** Registered user  
-- **Returns:** Array of cards
+1. **GET `/cards`**  
+   Retrieve all cards.  
+   **Authorization:** Anyone  
+   **Returns:** Array of 2 cards
 
-### `GET /cards/:id`
-- **Description:** Retrieve a card by its ID.  
-- **Authorization:** Anyone  
-- **Returns:** A card object
+2. **GET `/cards/my-cards`**  
+   Retrieve all cards created by the logged-in user.  
+   **Authorization:** Registered user  
+   **Returns:** Array of cards
 
-### `POST /cards`
-- **Description:** Create a new card.  
-- **Authorization:** Business user  
-- **Returns:** The newly created card object
+3. **GET `/cards/:id`**  
+   Retrieve a card by its ID.  
+   **Authorization:** Anyone  
+   **Returns:** A card object
 
-### `PUT /cards/:id`
-- **Description:** Edit an existing card.  
-- **Authorization:** The user who created the card  
-- **Returns:** The updated card object
+4. **POST `/cards`**  
+   Create a new card.  
+   **Authorization:** Business user  
+   **Returns:** Newly created card object
 
-### `PATCH /cards/:id`
-- **Description:** Like a card.  
-- **Authorization:** Registered user  
-- **Returns:** The updated card object
+5. **PUT `/cards/:id`**  
+   Edit an existing card.  
+   **Authorization:** The user who created the card  
+   **Returns:** Updated card object
 
-### `DELETE /cards/:id`
-- **Description:** Delete a card.  
-- **Authorization:** The user who created the card or an admin  
-- **Returns:** The deleted card object
+6. **PATCH `/cards/:id`**  
+   Like a card.  
+   **Authorization:** Registered user  
+   **Returns:** Updated card object
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
+7. **DELETE `/cards/:id`**  
+   Delete a card.  
+   **Authorization:** The user who created the card or an admin  
+   **Returns:** Deleted card object
